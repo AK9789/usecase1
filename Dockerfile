@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.8
 ARG USERNAME=princess
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
