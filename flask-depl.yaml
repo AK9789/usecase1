@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-depl
+spec:
+  selector:
+    matchLabels:
+      app: flask-depl
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask-depl
+    spec:
+      containers:
+        - name: flask-depl
+          image: ashwin9789/flask-sql-app
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 500m
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_HOST
+              value: db
+            - name: DB_NAME
+              value: cr
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASSWORD
+              value: root
